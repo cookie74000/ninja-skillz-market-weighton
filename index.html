@@ -375,7 +375,134 @@
       .btn-secondary { display: block; margin: 12px auto 0; }
       .programmes-grid { flex-direction: column; }
     }
-  </style>
+  
+    /* ── COUNTDOWN TIMER ── */
+    .countdown-section {
+      background: #111;
+      padding: 28px 20px;
+      text-align: center;
+      border-bottom: 2px solid #FFD700;
+    }
+    .countdown-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #FFD700;
+      margin-bottom: 12px;
+    }
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .countdown-unit {
+      background: #1a1a1a;
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      padding: 12px 20px;
+      min-width: 72px;
+    }
+    .countdown-number {
+      display: block;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: #FFD700;
+      line-height: 1;
+    }
+    .countdown-unit-label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #aaa;
+      margin-top: 4px;
+    }
+    .countdown-expired {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #FFD700;
+    }
+
+    /* ── SPACES REMAINING ── */
+    .spaces-remaining-bar {
+      background: #1a0000;
+      border: 1px solid #cc0000;
+      border-radius: 8px;
+      padding: 14px 20px;
+      margin: 20px auto;
+      max-width: 480px;
+      text-align: center;
+    }
+    .spaces-remaining-bar .spaces-count {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #ff4444;
+    }
+    .spaces-remaining-bar .spaces-text {
+      font-size: 0.9rem;
+      color: #ffaaaa;
+      margin-top: 4px;
+    }
+    .spaces-progress {
+      background: #330000;
+      border-radius: 4px;
+      height: 8px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+    .spaces-progress-fill {
+      background: linear-gradient(90deg, #ff4444, #cc0000);
+      height: 100%;
+      border-radius: 4px;
+      transition: width 1s ease;
+    }
+
+    /* ── STICKY MOBILE CTA ── */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #FFD700;
+      padding: 12px 20px;
+      z-index: 9999;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.4);
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .sticky-cta-text {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #0a0a0a;
+      line-height: 1.3;
+    }
+    .sticky-cta-text span {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: #333;
+    }
+    .sticky-cta-btn {
+      background: #0a0a0a;
+      color: #FFD700;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 10px 18px;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    @media (max-width: 768px) {
+      .sticky-cta { display: flex; }
+      body { padding-bottom: 64px; }
+    }
+
+    </style>
 </head>
 <body>
 
@@ -404,6 +531,18 @@
     <span>★★★★★</span> &nbsp;100% recommended · 21 Facebook reviews
   </div>
 </section>
+
+
+<!-- COUNTDOWN TIMER -->
+<div class="countdown-section">
+  <div class="countdown-label">🚀 Classes Launch In</div>
+  <div class="countdown-grid" id="countdown">
+    <div class="countdown-unit"><span class="countdown-number" id="cd-days">--</span><span class="countdown-unit-label">Days</span></div>
+    <div class="countdown-unit"><span class="countdown-number" id="cd-hours">--</span><span class="countdown-unit-label">Hours</span></div>
+    <div class="countdown-unit"><span class="countdown-number" id="cd-mins">--</span><span class="countdown-unit-label">Minutes</span></div>
+    <div class="countdown-unit"><span class="countdown-number" id="cd-secs">--</span><span class="countdown-unit-label">Seconds</span></div>
+  </div>
+</div>
 
 <!-- LAUNCH INFO -->
 <div class="launch-info">
@@ -467,7 +606,7 @@
         <li>Following instructions</li>
       </ul>
       <p style="color:#aaa;font-size:0.88rem;margin-bottom:16px;">Fun, structured classes that build life skills from the very start.</p>
-      <div class="spaces-warning">⚠ Limited to 12 spaces per class</div>
+      <div class="spaces-warning">⚠ Only 7 spaces remaining</div>
       <div style="margin-bottom:12px;color:var(--yellow);font-weight:700;font-size:0.9rem;">🎁 First Taster Session — FREE</div>
       <a href="#register" class="btn-primary">Book Your FREE Taster</a>
     </div>
@@ -484,7 +623,7 @@
         <li>Anti-bullying awareness</li>
       </ul>
       <p style="color:#aaa;font-size:0.88rem;margin-bottom:16px;">We don't just teach martial arts — we build confident young leaders.</p>
-      <div class="spaces-warning">⚠ Limited to 12 spaces per class</div>
+      <div class="spaces-warning">⚠ Only 7 spaces remaining</div>
       <div style="margin-bottom:12px;color:var(--yellow);font-weight:700;font-size:0.9rem;">🎁 First Taster Session — FREE</div>
       <a href="#register" class="btn-primary">Book Your FREE Taster</a>
     </div>
@@ -629,6 +768,15 @@
   <h2>⚠ Only 12 Spaces Available Per Class</h2>
   <p>Once they're gone, they're gone. Don't miss your child's chance to be part of our founding Market Weighton intake on Saturday 2nd May at 9:00 AM.</p>
   <a href="#register" class="btn-dark">Claim Your Child's Space Now →</a>
+
+  <div class="spaces-remaining-bar">
+    <div class="spaces-count">⚡ Only <span id="spaces-num">7</span> of 12 spaces left</div>
+    <div class="spaces-text">Per class — first come, first served</div>
+    <div class="spaces-progress">
+      <div class="spaces-progress-fill" id="spaces-bar" style="width: 58%;"></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- REGISTER FORM -->
@@ -709,6 +857,16 @@
     });
   }
 </script>
+
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta" id="sticky-cta">
+  <div class="sticky-cta-text">
+    🥷 Book FREE Taster — 2nd May
+    <span>Market Weighton · Limited Spaces</span>
+  </div>
+  <a href="#register" class="sticky-cta-btn">Register Free →</a>
+</div>
 
 </body>
 </html>
