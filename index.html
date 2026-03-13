@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ninja Skillz Club — Market Weighton | New Classes Starting 2nd May</title>
+  <meta name="description" content="Brand-new Ninja Skillz classes launching in Market Weighton on Saturday 2nd May 2026. Little Ninjas (ages 3–4) and Junior Ninjas (ages 5–7). First taster session completely FREE. Only 12 spaces per class." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --yellow: #FFD700;
+      --black: #0a0a0a;
+      --dark: #111111;
+      --grey: #1a1a1a;
+      --text: #f0f0f0;
+      --muted: #aaaaaa;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--text); font-family: 'Segoe UI', Arial, sans-serif; line-height: 1.6; }
+
+    /* ANNOUNCEMENT BAR */
+    .announcement-bar {
+      background: var(--yellow);
+      color: var(--black);
+      text-align: center;
+      padding: 10px 20px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+    .announcement-bar a { color: var(--black); text-decoration: underline; cursor: pointer; }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a0a 50%, #0a0a0a 100%);
+      padding: 80px 20px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(255,215,0,0.03) 40px, rgba(255,215,0,0.03) 80px);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .hero h1 span { color: var(--yellow); }
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+    .free-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,215,0,0.1);
+      border: 2px solid var(--yellow);
+      border-radius: 8px;
+      padding: 12px 24px;
+      margin-bottom: 30px;
+      font-weight: 700;
+      color: var(--yellow);
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 16px 40px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(255,215,0,0.4); }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--yellow);
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 14px 32px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 2px solid var(--yellow);
+      margin-left: 12px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { background: var(--yellow); color: var(--black); }
+    .hero-stars {
+      margin-top: 30px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .hero-stars span { color: var(--yellow); font-size: 1.1rem; }
+
+    /* LAUNCH INFO */
+    .launch-info {
+      background: var(--grey);
+      padding: 40px 20px;
+    }
+    .launch-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .launch-item { flex: 1; min-width: 160px; }
+    .launch-item .icon { font-size: 2rem; margin-bottom: 8px; }
+    .launch-item .label { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--yellow); font-weight: 700; margin-bottom: 4px; }
+    .launch-item .value { font-size: 1.1rem; font-weight: 700; color: #fff; }
+
+    /* STATS */
+    .stats {
+      background: var(--yellow);
+      padding: 40px 20px;
+    }
+    .stats-grid {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .stat-item { flex: 1; min-width: 140px; }
+    .stat-item .number { font-size: 2.5rem; font-weight: 900; color: var(--black); line-height: 1; }
+    .stat-item .desc { font-size: 0.85rem; font-weight: 700; color: #333; margin-top: 4px; }
+
+    /* SECTION */
+    section { padding: 70px 20px; }
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 12px;
+      color: #fff;
+    }
+    .section-title span { color: var(--yellow); }
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 50px;
+    }
+
+    /* PROGRAMMES */
+    .programmes { background: var(--dark); }
+    .programmes-grid {
+      display: flex;
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+    .programme-card {
+      flex: 1;
+      min-width: 280px;
+      background: var(--grey);
+      border: 2px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 36px 30px;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .programme-card:hover { border-color: var(--yellow); }
+    .programme-card .age-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 800;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+      margin-bottom: 16px;
+    }
+    .programme-card .icon { font-size: 2.5rem; margin-bottom: 12px; }
+    .programme-card h3 { font-size: 1.6rem; font-weight: 900; color: #fff; margin-bottom: 12px; }
+    .programme-card p { color: var(--muted); margin-bottom: 20px; font-size: 0.95rem; }
+    .programme-card ul { list-style: none; margin-bottom: 24px; }
+    .programme-card ul li { padding: 6px 0; color: var(--text); font-size: 0.95rem; }
+    .programme-card ul li::before { content: '✓ '; color: var(--yellow); font-weight: 700; }
+    .programme-card .spaces-warning {
+      background: rgba(255,215,0,0.08);
+      border: 1px solid rgba(255,215,0,0.3);
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: var(--yellow);
+      margin-bottom: 20px;
+    }
+    .programme-card .btn-primary { width: 100%; text-align: center; }
+
+    /* BENEFITS */
+    .benefits { background: var(--black); }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .benefit-card {
+      background: var(--grey);
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-align: center;
+      border: 1px solid #2a2a2a;
+      transition: border-color 0.2s;
+    }
+    .benefit-card:hover { border-color: var(--yellow); }
+    .benefit-card .icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .benefit-card h4 { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .benefit-card p { color: var(--muted); font-size: 0.9rem; }
+
+    /* TESTIMONIALS */
+    .testimonials { background: var(--dark); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .testimonial-card {
+      background: var(--grey);
+      border-radius: 10px;
+      padding: 28px 24px;
+      border: 1px solid #2a2a2a;
+    }
+    .testimonial-stars { color: var(--yellow); font-size: 1.1rem; margin-bottom: 12px; }
+    .testimonial-text { color: var(--text); font-size: 0.92rem; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .author-avatar {
+      width: 40px; height: 40px;
+      background: var(--yellow);
+      color: var(--black);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 0.9rem;
+    }
+    .author-name { font-weight: 700; color: #fff; font-size: 0.9rem; }
+    .author-source { font-size: 0.78rem; color: var(--muted); }
+
+    /* FREE GUIDE */
+    .free-guide {
+      background: linear-gradient(135deg, #1a1a00, #0a0a0a);
+      border-top: 2px solid var(--yellow);
+      border-bottom: 2px solid var(--yellow);
+    }
+    .guide-inner {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .guide-badge {
+      display: inline-block;
+      background: var(--yellow);
+      color: var(--black);
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .guide-inner h2 { font-size: 2rem; font-weight: 900; color: #fff; margin-bottom: 12px; }
+    .guide-inner p { color: var(--muted); margin-bottom: 28px; font-size: 1rem; }
+    .guide-inner .btn-primary { font-size: 1rem; }
+    .guide-meta { margin-top: 12px; font-size: 0.82rem; color: var(--muted); }
+
+    /* URGENCY */
+    .urgency {
+      background: var(--yellow);
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .urgency h2 { font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 900; color: var(--black); margin-bottom: 12px; }
+    .urgency p { color: #333; font-size: 1.05rem; margin-bottom: 30px; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .urgency .btn-dark {
+      display: inline-block;
+      background: var(--black);
+      color: var(--yellow);
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 16px 40px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .urgency .btn-dark:hover { transform: translateY(-2px); }
+
+    /* REGISTER FORM */
+    .register { background: var(--dark); }
+    .form-container {
+      max-width: 580px;
+      margin: 0 auto;
+      background: var(--grey);
+      border-radius: 12px;
+      padding: 40px 36px;
+      border: 1px solid #2a2a2a;
+    }
+    .form-container h2 { font-size: 1.6rem; font-weight: 900; color: #fff; margin-bottom: 8px; }
+    .form-container p { color: var(--muted); margin-bottom: 28px; font-size: 0.95rem; }
+    .form-group { margin-bottom: 18px; }
+    .form-group label { display: block; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--yellow); margin-bottom: 6px; }
+    .form-group input, .form-group select {
+      width: 100%;
+      background: var(--black);
+      border: 1px solid #333;
+      border-radius: 6px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 1rem;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--yellow); }
+    .form-group select option { background: var(--black); }
+    .form-submit { width: 100%; margin-top: 8px; font-size: 1.05rem; padding: 16px; }
+    .form-privacy { margin-top: 14px; font-size: 0.8rem; color: var(--muted); text-align: center; }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid #222;
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    footer strong { color: #fff; }
+    footer p { margin-bottom: 6px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .btn-secondary { display: block; margin: 12px auto 0; }
+      .programmes-grid { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+  🥷 NEW CLASSES LAUNCHING — SATURDAY 2ND MAY &nbsp;|&nbsp; 🎁 FIRST TASTER SESSION COMPLETELY FREE &nbsp;|&nbsp; LIMITED SPACES — <a href="#register">REGISTER NOW</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🥋 Market Weighton — New Programme</div>
+  <h1>Is Your Child Ready to Become a<br><span>Confident Little Ninja?</span></h1>
+  <p>For 15 years, Ninja Skillz has helped children grow in confidence, focus and discipline — all while having an absolute blast.</p>
+  <div class="free-badge">
+    🎁 First Taster Session is <strong>FREE</strong> — No commitment, just come and try it!
+  </div>
+  <br>
+  <a href="#register" class="btn-primary">Book Your FREE Taster →</a>
+  <a href="#programmes" class="btn-secondary">See All Classes</a>
+  <div class="hero-stars">
+    <span>★★★★★</span> &nbsp;100% recommended · 21 Facebook reviews
+  </div>
+</section>
+
+<!-- LAUNCH INFO -->
+<div class="launch-info">
+  <div class="launch-grid">
+    <div class="launch-item">
+      <div class="icon">📅</div>
+      <div class="label">Date</div>
+      <div class="value">Saturday, 2nd May 2026</div>
+    </div>
+    <div class="launch-item">
+      <div class="icon">📍</div>
+      <div class="label">Venue</div>
+      <div class="value">MW Community Hall, Market Weighton</div>
+    </div>
+    <div class="launch-item">
+      <div class="icon">⏰</div>
+      <div class="label">Time</div>
+      <div class="value">9:00 AM</div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <div class="number">15</div>
+      <div class="desc">Years helping children grow since 2009</div>
+    </div>
+    <div class="stat-item">
+      <div class="number">500+</div>
+      <div class="desc">Families trusted across Yorkshire</div>
+    </div>
+    <div class="stat-item">
+      <div class="number">100%</div>
+      <div class="desc">Recommended — 21 five-star Facebook reviews</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAMMES -->
+<section class="programmes" id="programmes">
+  <h2 class="section-title">Choose Your Child's <span>Programme</span></h2>
+  <p class="section-subtitle">Two age-specific programmes designed to meet your child exactly where they are — and take them further than you imagined.</p>
+  <div class="programmes-grid">
+    <!-- Little Ninjas -->
+    <div class="programme-card">
+      <div class="age-badge">Ages 3–4</div>
+      <div class="icon">👶</div>
+      <h3>Little Ninjas</h3>
+      <p>Designed for energetic preschoolers who need help with focus, coordination and confidence in a fun, structured environment.</p>
+      <ul>
+        <li>Listening &amp; focus</li>
+        <li>Balance &amp; coordination</li>
+        <li>Confidence in groups</li>
+        <li>Following instructions</li>
+      </ul>
+      <p style="color:#aaa;font-size:0.88rem;margin-bottom:16px;">Fun, structured classes that build life skills from the very start.</p>
+      <div class="spaces-warning">⚠ Limited to 12 spaces per class</div>
+      <div style="margin-bottom:12px;color:var(--yellow);font-weight:700;font-size:0.9rem;">🎁 First Taster Session — FREE</div>
+      <a href="#register" class="btn-primary">Book Your FREE Taster</a>
+    </div>
+    <!-- Junior Ninjas -->
+    <div class="programme-card">
+      <div class="age-badge">Ages 5–7</div>
+      <div class="icon">🥋</div>
+      <h3>Junior Ninjas</h3>
+      <p>Perfect for children ready to grow in confidence and independence. We build the skills that matter in school and beyond.</p>
+      <ul>
+        <li>Self-belief &amp; resilience</li>
+        <li>Discipline &amp; focus</li>
+        <li>Better concentration at school</li>
+        <li>Anti-bullying awareness</li>
+      </ul>
+      <p style="color:#aaa;font-size:0.88rem;margin-bottom:16px;">We don't just teach martial arts — we build confident young leaders.</p>
+      <div class="spaces-warning">⚠ Limited to 12 spaces per class</div>
+      <div style="margin-bottom:12px;color:var(--yellow);font-weight:700;font-size:0.9rem;">🎁 First Taster Session — FREE</div>
+      <a href="#register" class="btn-primary">Book Your FREE Taster</a>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits">
+  <h2 class="section-title">Why Parents Choose <span>Ninja Skillz</span></h2>
+  <p class="section-subtitle"></p>
+  <div class="benefits-grid">
+    <div class="benefit-card">
+      <div class="icon">🎯</div>
+      <h4>Focus &amp; Discipline</h4>
+      <p>Skills that carry directly into the classroom and everyday life.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">💪</div>
+      <h4>Real Confidence</h4>
+      <p>Not just in the dojo — confidence that shows up everywhere.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">🛡️</div>
+      <h4>Anti-Bullying</h4>
+      <p>We empower children to stand tall, stay safe and speak up.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">🤝</div>
+      <h4>Social Skills</h4>
+      <p>Making friends, teamwork, communication and mutual respect.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">😄</div>
+      <h4>Pure Fun</h4>
+      <p>Every class is energetic, engaging and something kids look forward to.</p>
+    </div>
+    <div class="benefit-card">
+      <div class="icon">📈</div>
+      <h4>Structured Progress</h4>
+      <p>Clear milestones so children — and parents — see real growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2 class="section-title">What Parents Are <span>Saying</span></h2>
+  <p class="section-subtitle">Real reviews from real families — 100% recommended on Facebook</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Gavin and the higher belts have all been fantastic with my little boy. He loves attending every session and is learning valuable life skills. I'd highly recommend the club to both adults and children."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">EP</div>
+        <div>
+          <div class="author-name">Emma Preston</div>
+          <div class="author-source">💬 Facebook Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"My eldest daughter needed a bit of confidence and coordination which is why I decided to enrol her. She has attended just once a week for 8–10 weeks and the difference is amazing, even down to her no longer tripping over her own feet! She has also made some new friends."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">JC</div>
+        <div>
+          <div class="author-name">Janine Coldbeck Hill</div>
+          <div class="author-source">💬 Facebook Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"My son who is 5 started Taekwondo classes with Gavin back in September — after his first lesson he was hooked! He looks forward to class every week. Gavin is fantastic with the kids, he really engages with them and teaches fitness, discipline, respect and fun all in one hour."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">CL</div>
+        <div>
+          <div class="author-name">Cheryl Leng</div>
+          <div class="author-source">💬 Facebook Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"We've just returned from our first 'out of club' tournament and both of our kids had a great time. Bringing home a medal and some massive smiles was credit to the commitment from both our kids and the fantastic training that Gavin and the crew provide."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">AH</div>
+        <div>
+          <div class="author-name">Andrew Harrison</div>
+          <div class="author-source">💬 Facebook Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"My son James joined 3 years ago — from the first day he met Gavin a bond was formed. Sometimes children need a helping hand in life that a parent can't give, and Gavin's bond with James and the rest of the students is something that will stay with them into adulthood."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">AA</div>
+        <div>
+          <div class="author-name">Annemarie Anderson</div>
+          <div class="author-source">💬 Facebook Review</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">"Myself and my two sons aged 9 and 6 started training at this club just over two years ago and it is honestly one of the best decisions we have made. The classes are fun and enjoyable for all ages, and we have all learned loads and made great progress."</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">EP</div>
+        <div>
+          <div class="author-name">Emma Patterson</div>
+          <div class="author-source">💬 Facebook Review</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FREE GUIDE -->
+<section class="free-guide">
+  <div class="guide-inner">
+    <div class="guide-badge">🎁 Free Gift for Parents</div>
+    <h2>The Parent Skillz Guide</h2>
+    <p><strong style="color:#fff;">20 Pages of Brain Science &amp; Parenting Strategies</strong><br><br>
+    Written by child development experts and SKILLZ instructors — this free guide covers how your child's brain develops, what to expect at every age, game-based learning, ADHD strategies and proven parenting techniques. Completely free. No sign-up needed.</p>
+    <a href="#register" class="btn-primary">📥 Download Your Free Guide Now</a>
+    <div class="guide-meta">Instant PDF download · 20 pages · 100% free</div>
+  </div>
+</section>
+
+<!-- URGENCY -->
+<div class="urgency">
+  <h2>⚠ Only 12 Spaces Available Per Class</h2>
+  <p>Once they're gone, they're gone. Don't miss your child's chance to be part of our founding Market Weighton intake on Saturday 2nd May at 9:00 AM.</p>
+  <a href="#register" class="btn-dark">Claim Your Child's Space Now →</a>
+</div>
+
+<!-- REGISTER FORM -->
+<section class="register" id="register">
+  <div class="form-container">
+    <h2>Reserve Your Child's Space Today</h2>
+    <p>Fill in your details and we'll be in touch to confirm your taster session for Saturday 2nd May.</p>
+    <form action="https://formspree.io/f/gavin@traintaekwondo.co.uk" method="POST">
+      <div class="form-group">
+        <label>Parent's Name</label>
+        <input type="text" name="parent_name" placeholder="Your full name" required />
+      </div>
+      <div class="form-group">
+        <label>Child's Name</label>
+        <input type="text" name="child_name" placeholder="Child's first name" required />
+      </div>
+      <div class="form-group">
+        <label>Child's Age</label>
+        <input type="number" name="child_age" placeholder="e.g. 4" min="3" max="7" required />
+      </div>
+      <div class="form-group">
+        <label>Which Class?</label>
+        <select name="class" required>
+          <option value="" disabled selected>Select a programme</option>
+          <option value="Little Ninjas (Ages 3-4)">👶 Little Ninjas (Ages 3–4)</option>
+          <option value="Junior Ninjas (Ages 5-7)">🥋 Junior Ninjas (Ages 5–7)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="07xxx xxxxxx" required />
+      </div>
+      <button type="submit" class="btn-primary form-submit">🥷 Secure Our Space — Register Now</button>
+      <p class="form-privacy">We respect your privacy. Your details will only be used to confirm your taster session and will never be shared with third parties.</p>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Ninja Skillz Club — Market Weighton</strong></p>
+  <p>MW Community Hall, Market Weighton &nbsp;|&nbsp; Classes from Saturday 2nd May 2026</p>
+  <p>📞 07833 665905 &nbsp;|&nbsp; ✉ gavin@traintaekwondo.co.uk</p>
+  <p style="margin-top:12px;font-size:0.78rem;">Classes subject to minimum enrolment. Spaces allocated on a first-come, first-served basis.<br>Part of Train Taekwondo Schools — www.traintaekwondo.co.uk</p>
+</footer>
+
+</body>
+</html>
