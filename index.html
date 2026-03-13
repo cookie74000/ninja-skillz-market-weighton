@@ -859,6 +859,49 @@
 </script>
 
 
+<script>
+  // COUNTDOWN TIMER
+  (function() {
+    var launch = new Date('2026-05-02T09:00:00').getTime();
+    function tick() {
+      var now = new Date().getTime();
+      var diff = launch - now;
+      if (diff <= 0) {
+        var el = document.getElementById('countdown');
+        if (el) el.innerHTML = '<span class="countdown-expired">\uD83C\uDF89 Classes have launched! Register below.</span>';
+        return;
+      }
+      var d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      var h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      var s = Math.floor((diff % (1000 * 60)) / 1000);
+      var dEl = document.getElementById('cd-days');
+      var hEl = document.getElementById('cd-hours');
+      var mEl = document.getElementById('cd-mins');
+      var sEl = document.getElementById('cd-secs');
+      if (dEl) dEl.textContent = String(d).padStart(2,'0');
+      if (hEl) hEl.textContent = String(h).padStart(2,'0');
+      if (mEl) mEl.textContent = String(m).padStart(2,'0');
+      if (sEl) sEl.textContent = String(s).padStart(2,'0');
+    }
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  // STICKY CTA: hide when register section is visible
+  (function() {
+    var stickyCta = document.getElementById('sticky-cta');
+    var registerSection = document.getElementById('register');
+    if (!stickyCta || !registerSection) return;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        stickyCta.style.display = entry.isIntersecting ? 'none' : '';
+      });
+    }, { threshold: 0.1 });
+    observer.observe(registerSection);
+  })();
+</script>
+
 <!-- STICKY MOBILE CTA -->
 <div class="sticky-cta" id="sticky-cta">
   <div class="sticky-cta-text">
